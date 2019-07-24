@@ -51,7 +51,7 @@ router.post('/register',async(request,response)=>{
   //try里面放可能出现错误的代码，一旦出现错误，会携带着错误信息来到catch中。
   try{
     //3.检查该邮箱是否注册过
-    let finResult = await userModel.findOne2({email})
+    let finResult = await userModel.findOne({email})
     if(finResult){
       //response.send(`注册失败，${email}邮箱已经被注册了`)
       //return
