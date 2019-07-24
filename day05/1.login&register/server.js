@@ -37,6 +37,7 @@ db.then(()=>{
       return
     }
 
+    //try里面放可能出现错误的代码，一旦出现错误，会携带着错误信息来到catch中。
     try{
       //3.检查该邮箱是否注册过
       let finResult = await userModel.findOne2({email})
@@ -64,7 +65,7 @@ db.then(()=>{
     response.sendFile(__dirname+'/public/register.html')
   })
 
-}).catch((er)=>{
+}).catch((err)=>{
     console.log('数据库连接失败',err)
 })
 
