@@ -7,7 +7,9 @@ app.set("view engine" , "ejs");
 app.set("views","./views")
 
 app.get('/',(request,response)=>{
-  response.render('demo')
+  let data = [{name:'kobe',age:18},{name:'wade',age:19},{name:'peiqi',age:20},{name:'qiaozhi',age:21},{name:'qiaozhi',age:21},{name:'qiaozhi',age:21},{name:'qiaozhi',age:21}]
+
+  response.render('demo',{data})
 })
 
 

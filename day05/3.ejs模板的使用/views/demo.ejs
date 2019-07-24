@@ -6,7 +6,22 @@
 </head>
 <body>
 
-<h3>马上放学了</h3>
+<!--
+    ejs常用的三种语法
+        第一种：< % xxxx % >    xxx可以替换为任意的js代码,不会输出任何内容给浏览器。
+        第二种：< %-xxxxx% >    xxx可以替换为任意的js变量，渲染标签
+        第三种：< %=xxxxx% >    xxx可以替换为任意的js变量，不渲染标签
+-->
+
+<div>
+    <%for (var i=0; i<data.length; i++ ){%>
+        <ul>
+            <li>姓名：<%=data[i].name%></li>
+            <li>年龄：<%=data[i].age%></li>
+        </ul>
+    <%}%>
+</div>
+
 
 </body>
 </html>

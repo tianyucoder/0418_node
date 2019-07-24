@@ -119,7 +119,7 @@ ee-first@1.1.1:
 
 ejs@^2.6.2:
   version "2.6.2"
-  resolved "https://registry.npm.taobao.org/ejs/download/ejs-2.6.2.tgz#3a32c63d1cd16d11266cd4703b14fec4e74ab4f6"
+  resolved "https://registry.npm.taobao.org/ejs/download/ejs-2.6.2.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fejs%2Fdownload%2Fejs-2.6.2.tgz#3a32c63d1cd16d11266cd4703b14fec4e74ab4f6"
   integrity sha1-OjLGPRzRbREmbNRwOxT+xOdKtPY=
 
 encodeurl@~1.0.2:
