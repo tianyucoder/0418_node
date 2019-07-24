@@ -19,7 +19,7 @@ router.post('/register',async(request,response)=>{
   const nickNameReg = /[\u4e00-\u9fa5]/gm
   const passwordReg = /^[a-zA-Z0-9_#]{6,16}$/
   //定义一个收集错误信息的对象
-  let errMsg = {}
+  const errMsg = {}
   //使用正则进行校验
   if(!emailReg.test(email)){
     //response.send('邮箱输入不合法！要求邮箱用户名2-16位不包含特殊字符，邮箱主机名2-16位')
@@ -80,12 +80,21 @@ router.post('/login',async(request,response)=>{
   //定义正则表达式
   const emailReg = /^[a-zA-Z0-9_]{2,16}@[a-zA-Z0-9]{2,16}\.com$/
   const passwordReg = /^[a-zA-Z0-9_#]{6,16}$/
+  const errMsg = {}
   //使用正则进行校验
   if(!emailReg.test(email)){
-    response.send('邮箱输入不合法！要求邮箱用户名2-16位不包含特殊字符，邮箱主机名2-16位')
-    return
-  }else if(!passwordReg.test(password)){
-    response.send('密码输入不合法，密码应为6-16位字符不包含特殊字符')
+    //response.send('邮箱输入不合法！要求邮箱用户名2-16位不包含特殊字符，邮箱主机名2-16位')
+    //return
+    errMsg.emailErr = '邮箱输入不合法！要求邮箱用户名2-16位不包含特殊字符，邮箱主机名2-16位'
+  }
+  if(!passwordReg.test(password)){
+    // response.send('密码输入不合法，密码应为6-16位字符不包含特殊字符')
+    // return
+    errMsg.passwordErr = '密码输入不合法，密码应为6-16位字符不包含特殊字符'
+  }
+  //判断错误对象是否为空
+  if(JSON.stringify(errMsg) !== '{}'){
+    response.render('login',{errMsg})
     return
   }
 
@@ -94,12 +103,17 @@ router.post('/login',async(request,response)=>{
     if(finResult){
       response.redirect('https://www.baidu.com')
     }else{
-      response.send('登录失败，邮箱或密码输入错误！')
+      errMsg.loginErr = '登录失败，邮箱或密码输入错误！'
+      //response.send('登录失败，邮箱或密码输入错误！')
+      response.render('login',{errMsg})
     }
   }
   catch(err){
     console.log(err)
-    response.send('阿偶，网络不稳定，稍后重试！')
+    errMsg.networkErr = '阿偶，网络不稳定，稍后重试！'
+    //response.send('阿偶，网络不稳定，稍后重试！')
+    response.render('login',{errMsg})
+
   }
 
 

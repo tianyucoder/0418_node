@@ -13,7 +13,7 @@ router.get('/login',(request,response)=>{
   //let filePath = resolve(__dirname,'../public/login.html')
   //response.sendFile(filePath)
   const {email} = request.query
-  response.render('login',{email})
+  response.render('login',{errMsg:{email}})
 })
 //UI路由--注册
 router.get('/register',(request,response)=>{
