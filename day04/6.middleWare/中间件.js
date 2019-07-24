@@ -19,9 +19,10 @@
         4)	路由器中间件 （Router）
               --后面会说
    备注：
-        在express中，定义路由和中间件的时候，根据定义的顺序（代码的顺序），将定义的每一个中间件或路由，
-        放在一个类似于数组的容器中，当请求过来的时候，一次从容器中取出中间件和路由，进行匹配，如果匹配
+        1.在express中，定义路由和中间件的时候，根据定义的顺序（代码的顺序），将定义的每一个中间件或路由，
+        放在一个类似于数组的容器中，当请求过来的时候，依次从容器中取出中间件和路由，进行匹配，如果匹配
         成功，交由该路由或中间件处理。
+        2.对于服务器来说，一次请求，只有一个请求对象，和一个响应对象，其他任何的request和response都是对二者的引用。
  */
 
 let express = require('express')
@@ -51,12 +52,14 @@ function myMiddleWare(request,response,next) {
   if(request.get('host') !== 'localhost:3000'){
     response.send('禁止发送非法请求')
   }else{
+    request.demo = 123
     next() //让下一个匹配的路由或中间件生效
   }
 }
 
 app.get('/',myMiddleWare,(request,response)=>{
-   response.send('我是根路由的响应')
+  console.log(request.demo);
+  response.send('我是根路由的响应')
 })
 
 app.get('/meishi',(request,response)=>{
@@ -71,6 +74,7 @@ app.post('/demo',(request,response)=>{
 /*app.get('/index',(request,response)=>{
   response.sendFile(__dirname+'/public/index.html')
 })*/
+
 
 app.listen(3000,(err)=>{
   if(!err)console.log('ok')
