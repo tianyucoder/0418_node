@@ -101,8 +101,8 @@ router.post('/login',async(request,response)=>{
   try{
     let findResult = await userModel.findOne({email,password})
     if(findResult){
-      response.redirect(`/usercenter?nick_name=${findResult.nick_name}`)
-      //response.render('usercenter',{nickName:findResult.nick_name})
+      //response.redirect(`/usercenter?nick_name=${findResult.nick_name}`)
+      response.render('usercenter',{nickName:findResult.nick_name})
     }else{
       errMsg.loginErr = '登录失败，邮箱或密码输入错误！'
       //response.send('登录失败，邮箱或密码输入错误！')
