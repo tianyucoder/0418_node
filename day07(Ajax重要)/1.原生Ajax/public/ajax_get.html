@@ -58,10 +58,17 @@
     }
 
     //3.指定发请求的：方式、地址、参数。
-    xhr.open('GET','http://localhost:3000/test_get?name=kobe&age=18')
-
+    xhr.open('GET','http://localhost:3000/test_get?name=kobe&age=18&t='+Date.now())
+    
     //4.发送请求。
     xhr.send()
+    
+    /*
+    * 对于IE来说：
+    *   只要请求的地址不发生变化，那么直接走强缓存
+    * 对于chrome和火狐
+    *   请求地址不发生变化，尝试请求协商缓存。
+    * */
   }
   
   
