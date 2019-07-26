@@ -24,11 +24,15 @@
 * */
 
 let express = require('express')
+let cookieParser = require('cookie-parser')
 
 let app = express()
 app.disable('x-powered-by')
 app.use(express.static('public'))
+//使用cookie-parser，解析浏览器携带过来的cookie为为一个对象，随后挂载到request上
+app.use(cookieParser())
 
+//“种”cookie
 app.get('/test1',(request,response)=>{
   /*
   * 当访问test1路由时会给客户端“种”一个cookie
@@ -39,8 +43,30 @@ app.get('/test1',(request,response)=>{
   //response.cookie('demo',123)
 
   //给客户端“种”下一个持久化cookie
-  //response.cookie('demo',123,{maxAge:30 * 1000})
+  response.cookie('demo',123,{maxAge:30 * 1000})
   response.send('<h2>我给你种下了一个cookie，你快看看</h2>')
+})
+//“读”cookie
+app.get('/test2',(request,response)=>{
+  /*
+  * 当访问test2时，会获取到浏览器携带过来的cookie
+  * 在express中更翻遍的获取客户端携带过来的cookie，要借助一个中间件，名字：cookie-parser
+  * */
+  console.log(request.cookies)
+  const {demo} = request.cookies
+  console.log(demo)
+  response.send('<h2>我读到了你携带过来的cookies</h2>')
+})
+//“删”cookie
+app.get('/test3',(request,response)=>{
+
+  //第一种删除方式：
+  //response.cookie('demo','',{maxAge:0})
+
+  //第二种删除方式：
+  response.clearCookie('demo')
+
+  response.send('我删除了cookie')
 })
 
 
