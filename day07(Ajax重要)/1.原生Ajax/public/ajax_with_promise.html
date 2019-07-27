@@ -29,14 +29,11 @@
     })
   }
   
-  /*let obj = {
-    m:1,
-    n:2,
-    r:3,
-    t:4
-  }
-  
-  'm=1&n=2&r=3'*/
+  /*;(async()=>{
+    let {data} = await sendAjax('http://localhost:3000/test_get','GET',{m:1,n:2})
+    let {data2} = await sendAjax('http://localhost:3000/test_get','GET',{data})
+    let {data3} = await sendAjax('http://localhost:3000/test_get','GET',{data2})
+  })()*/
   
   function sendAjax(url,method,data) {
     return new Promise((resolve,reject)=>{
