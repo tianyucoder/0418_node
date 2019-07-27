@@ -6,7 +6,7 @@
 </head>
 <body>
 <button id="btn">点我获取数据</button>
-<script src="https://cdn.bootcss.com/jquery/3.4.1/jquery.min.js"></script>
+<script src="./jquery-1.12.4.js"></script>
 
 <script type="text/javascript">
   /*
@@ -24,7 +24,9 @@
   
   let btn = document.getElementById('btn')
   btn.onclick = function () {
-    //1.动态创建script节点
+    
+    //自己实现jsonp解决跨域
+    /*//1.动态创建script节点
     let scriptNode = document.createElement('script')
     //2.定义一个接收数据的函数
     window.getData = function (data) {
@@ -33,7 +35,27 @@
     //3.利用标签把请求发出去
     scriptNode.src = 'http://localhost:3000/test_get?callback=getData'
     //4.将标签放入页面，目的是把请求发出去
-    document.body.appendChild(scriptNode)
+    document.body.appendChild(scriptNode)*/
+    
+    //使用jQuery封装的jsonp(标准)
+    /*$.ajax('http://localhost:3000/test_get',{
+      method:'GET',
+      dataType:'jsonp',
+      data:{m:1,n:2},
+      success:function (data) {
+        console.log(data)
+      },
+      error:function (err) {
+        console.log(err)
+      }
+    })*/
+
+    //使用jQuery封装的jsonp(简写)
+    $.getJSON('http://localhost:3000/test_get?callback=?',{m:3,n:4},(data)=>{
+        console.log(data)
+    })
+    
+    
   }
   
 </script>

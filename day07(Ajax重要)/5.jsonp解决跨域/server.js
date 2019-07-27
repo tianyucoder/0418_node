@@ -10,11 +10,11 @@ app.disable('x-powered-by')
 app.use(express.urlencoded({extended:true}))
 
 app.get('/test_get',(request,response)=>{
+  console.log(request.query)
   let {callback} = request.query
   let arr = [{name:'kobe',age:18},{name:'wade',age:20}]
   response.send(`${callback}(${JSON.stringify(arr)})`)
 })
-
 
 app.listen(3000,(err)=>{
   if(!err) console.log('该服务器用于测试jsonp解决跨域问题，必须通过webstorm打开网页')

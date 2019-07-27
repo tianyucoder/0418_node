@@ -9,7 +9,7 @@
 
 <button id="btn1">点我使用jQuery发送Ajax-GET请求</button>
 <button id="btn2">点我使用jQuery发送Ajax-POST请求</button>
-<script type="text/javascript" src="./js/jquery-1.12.4.js"></script>
+<script type="text/javascript" src="./jquery-1.12.4.js"></script>
 
 <script type="text/javascript">
   
@@ -25,7 +25,7 @@
     * */
     
     //使用jQuery发送Ajax-GET请求（标准写法）
-    $.ajax('http://localhost:3000/test_get',{
+    /*$.ajax('http://localhost:3000/test_get',{
       method:'GET',
       data:{name:'kobe',age:18},
       success:function (result) {
@@ -34,7 +34,7 @@
       error:function (err) {
         console.log(err)
       }
-    })
+    })*/
     
     //使用jQuery发送Ajax-GET请求（简写）
     $.get('http://localhost:3000/test_get',{name:'kobe',age:18},(data)=>{
