@@ -51,7 +51,7 @@
         console.log(xhr.response);
       }*/
       if(xhr.readyState === 4 && xhr.status === 200){
-        console.log(xhr.response)
+        console.log(xhr)
         let demo = document.getElementById('demo')
         demo.innerHTML = xhr.response
       }

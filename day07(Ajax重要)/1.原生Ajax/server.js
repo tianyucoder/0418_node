@@ -26,6 +26,7 @@ app.listen(3000,(err)=>{
     console.log('【不要使用webstorm打开html页面，会存在跨域问题！！用以下地址】')
     console.log('测试原生js发送Ajax-GET请求的地址是：http://localhost:3000/ajax_get.html')
     console.log('测试原生js发送Ajax-POST请求的地址是：http://localhost:3000/ajax_post.html')
+    console.log('测试自己封装的Ajax请求的地址是：http://localhost:3000/ajax_with_promise.html')
   }
   else console.log(err)
 })
