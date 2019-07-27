@@ -11,10 +11,18 @@
 
 <script type="text/javascript">
   
-
   let btn1 = document.getElementById('btn1')
+  let btn2 = document.getElementById('btn2')
+  
   btn1.onclick = function () {
-    sendAjax('http://localhost:3000/test_post','POST',{m:1,n:2}).then((data)=>{
+    sendAjax('http://localhost:3000/test_get','GET',{m:1,n:2}).then((data)=>{
+      console.log(data)
+    }).catch((err)=>{
+      console.log(err)
+    })
+  }
+  btn2.onclick = function () {
+    sendAjax('http://localhost:3000/test_post','POST',{m:3,n:4}).then((data)=>{
       console.log(data)
     }).catch((err)=>{
       console.log(err)
