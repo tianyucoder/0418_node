@@ -25,7 +25,7 @@
     * */
     
     //使用jQuery发送Ajax-GET请求（标准写法）
-    $.ajax('http://localhost:3000/test_get',{
+   $.ajax('http://localhost:3000/test_get',{
       method:'GET',
       data:{name:'kobe',age:18},
       success:function (result) {
@@ -51,7 +51,7 @@
     *   -error:失败的回调
     * */
 
-    //使用jQuery发送Ajax-GET请求（标准写法）
+    //使用jQuery发送Ajax-POST请求（标准写法）
     /*$.ajax('http://localhost:3000/test_post',{
       method:'POST',
       data:{name:'kobe',age:18},
@@ -63,7 +63,7 @@
       }
     })*/
 
-    //使用jQuery发送Ajax-GET请求（简写）
+    //使用jQuery发送Ajax-POST请求（简写）
     $.post('http://localhost:3000/test_post',{name:'kobe',age:18},(data)=>{
       console.log(data)
     })

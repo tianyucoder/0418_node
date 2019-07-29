@@ -26,8 +26,8 @@
   btn.onclick = function () {
     
     //自己实现jsonp解决跨域
-    /*//1.动态创建script节点
-    let scriptNode = document.createElement('script')
+    //1.动态创建script节点
+    /*let scriptNode = document.createElement('script')
     //2.定义一个接收数据的函数
     window.getData = function (data) {
       console.log(data)
@@ -38,7 +38,7 @@
     document.body.appendChild(scriptNode)*/
     
     //使用jQuery封装的jsonp(标准)
-    /*$.ajax('http://localhost:3000/test_get',{
+    $.ajax('http://localhost:3000/test_get',{
       method:'GET',
       dataType:'jsonp',
       data:{m:1,n:2},
@@ -48,7 +48,7 @@
       error:function (err) {
         console.log(err)
       }
-    })*/
+    })
 
     //使用jQuery封装的jsonp(简写)
     $.getJSON('http://localhost:3000/test_get?callback=?',{m:3,n:4},(data)=>{
