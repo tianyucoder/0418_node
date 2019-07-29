@@ -29,6 +29,7 @@ app.use(session({
     touchAfter: 1800//修改频率（例：//在24小时之内只更新一次）
   }),
   cookie: {
+    httpOnly: true, // 开启后前端无法通过 JS 操作cookie
     maxAge: 1000*30 // 设置cookie的过期时间
   },
 }));

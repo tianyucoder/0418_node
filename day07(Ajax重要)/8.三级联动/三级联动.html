@@ -45,7 +45,8 @@
     //根据省份编码获取该省下的所有市
     $province.change(function () {
       let province = this.value
-      $city.html('<option value="">请选择省份</option>')
+      $city.html('<option value="">请选择市</option>')
+      $county.html('<option value="">请选择区/县</option>')
       if(!province){
         return
       }
@@ -60,6 +61,31 @@
             alert(result.err)
           }
       })
+    })
+    
+    //根据省份编码和市编码获取区县信息
+    $city.change(function () {
+      let province = $province.val()
+      let city = this.value
+      $county.html('<option value="">请选择区/县</option>')
+      if(!city){
+        return
+      }
+      $.get('http://localhost:3000/getCountyByProCodeAndCitCode',{province,city},(result)=>{
+        const {state,data} = result
+        if(state === 1){
+          let html = data.map((item)=>{
+            return `<option value="${item.code}">${item.name}</option>`
+          })
+          $county.append(html)
+        }else{
+          alert(result.err)
+        }
+      })
+    })
+    
+    $county.change(()=>{
+       alert($county.val())
     })
   })
   
